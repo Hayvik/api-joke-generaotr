@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./joke.css">
+    <link rel="stylesheet" href=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      
+        <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+      
+        <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+        </script>
+      
+        <script src=
+    "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+        </script>
+        <script>
+        function generateJoke(){
+            var data = fetch("https://official-joke-api.appspot.com/random_joke")
+            data.then((resolve)=>{
+                resolve.json().then((result)=>{
+                    var element = document.getElementById("button")
+                    console.log(element);
+                    element.innerHTML=`Setup : ${result.setup} </br> 
+                    Punchline : ${result.punchline}</br>
+                    Genre : ${result.type}
+                    `;
+                    element.classList.add("jokes");
+                })
+            })
+        }
+    </script>
+</head>
+<body>
+    <div id="button"></div>
+    
+    <button type="button" class="btn btn-outline-success" onclick="generateJoke()" >Generate Joke</button>
+</body>
+</html>
